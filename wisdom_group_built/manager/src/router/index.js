@@ -71,7 +71,7 @@ export const constantRouterMap = [
         path: 'addLeague',
         name: 'AddLeague',
         component: () => import('@/views/leagueMember/addLeague'),
-        meta: { title: '录入团员团干部', icon: 'yonghu' }
+        meta: { title: '录入团员信息', icon: 'yonghu' }
       }
     ]
   },
@@ -109,7 +109,7 @@ export const constantRouterMap = [
         path: 'examination',
         name: 'Examination',
         component: () => import('@/views/businessManager/examination'),
-        meta: { title: '团员团干部注册审批', icon: 'menu' }
+        meta: { title: '团员注册审批', icon: 'menu' }
       },
       {
         path: 'changeAdmin',

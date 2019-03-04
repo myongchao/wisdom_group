@@ -176,14 +176,15 @@ public class LeagueController implements Serializable{
         return resultEntity;
     }
 
+
     @ApiOperation(value = "导出",notes = "导出")
     @PostMapping(value = "/export")
     @ResponseBody
-    public void export(@RequestBody List<Long> ids, HttpServletResponse response) throws Exception {
+    public void export(@RequestBody List<Long> ids, HttpServletResponse response){
         //获取数据
         List<League> list = leagueService.selectList(new EntityWrapper<League>().in("id",ids));
         //excel标题
-        String[] title = {"姓名","身份证号码","民族","政治面貌","文化程度","手机号","入团日期","QQ","是否团干","团干性质","现任职务","是否党员","是否管理员"};
+        String[] title = {"姓名","身份证号码","民族","政治面貌","文化程度","手机号","入团日期","QQ",}; //是否团干","团干性质","现任职务","是否党员","是否管理员"
 
         //创建院系实例
         // Department department = new Department();
@@ -210,11 +211,11 @@ public class LeagueController implements Serializable{
             content[i][5] = obj.getPhone();
             content[i][6] = format.format(obj.getLeagueTime());
             content[i][7] = obj.getQq();
-            content[i][8] = obj.getTuanGan();
-            content[i][9] = obj.getTuanGanXZ();
-            content[i][10] = obj.getPosition();
-            content[i][11] = obj.getPartyMember();
-            content[i][8] = obj.getIsAdmin();
+//            content[i][8] = obj.getTuanGan();
+//            content[i][9] = obj.getTuanGanXZ();
+//            content[i][10] = obj.getPosition();
+//            content[i][11] = obj.getPartyMember();
+//            content[i][8] = obj.getIsAdmin();
         }
 //创建HSSFWorkbook
         HSSFWorkbook wb = ExportExcel.getHSSFWorkbook(sheetName, title, content, null);
@@ -230,6 +231,7 @@ public class LeagueController implements Serializable{
         } catch (Exception e) {
             e.printStackTrace();
         }
+        //System.out.printf(response);
     }
 
     /**
@@ -241,12 +243,12 @@ public class LeagueController implements Serializable{
     public void setResponseHeader(HttpServletResponse response, String fileName) {
         try {
             try {
-                fileName = new String(fileName.getBytes(),"ISO8859-1");
+                fileName = new String(fileName.getBytes(),"UTF-8");
             } catch (UnsupportedEncodingException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            response.setContentType("application/octet-stream;charset=ISO8859-1");
+            response.setContentType("application/vnd.ms-excel;charset=UTF-8");
             response.setHeader("Content-Disposition", "attachment;filename="+ fileName);
             response.addHeader("Pargam", "no-cache");
             response.addHeader("Cache-Control", "no-cache");

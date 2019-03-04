@@ -14,7 +14,7 @@ public class JsonResultUtils{
     public static JsonResultEntity success(Object object) {
         JsonResultEntity jsonResult = new JsonResultEntity();
         jsonResult.setData(object);
-        jsonResult.setCode(20000);
+        jsonResult.setCode(200);
         jsonResult.setSuccess(true);
         return jsonResult;
     }
@@ -23,7 +23,7 @@ public class JsonResultUtils{
         JsonResultEntity jsonResult = new JsonResultEntity();
         jsonResult.setData(object);
         if(b){
-            jsonResult.setCode(20000);
+            jsonResult.setCode(200);
         }
         jsonResult.setSuccess(b);
         return jsonResult;
@@ -40,7 +40,7 @@ public class JsonResultUtils{
     public static JsonResultEntity success(Boolean b) {
         JsonResultEntity jsonResult = new JsonResultEntity();
         jsonResult.setData("");
-        jsonResult.setCode(20000);
+        jsonResult.setCode(200);
         jsonResult.setSuccess(b);
         return jsonResult;
     }

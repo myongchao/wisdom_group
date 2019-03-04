@@ -93,11 +93,11 @@
           <div class="each_menu">
             <img src="../../assets/images/ceshi.png">
           </div>
-          <p class="nav_title">团员团干部注册审批</p>
+          <p class="nav_title">团员注册审批</p>
         </a>
       </div>
       <div class="nav">
-        <a href="../..#/businessManager/admin">
+        <a href="../..#/tuanGan/changePosition">
           <div class="each_menu">
             <img src="../../assets/images/mtasks.png">
           </div>

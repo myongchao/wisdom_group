@@ -34,7 +34,7 @@ export function exportByIds(data) {
     url: '/league/export',
     method: 'post',
     data,
-    responseType: 'arraybuffer'
+    responseType: 'blob'
   })
 }
 

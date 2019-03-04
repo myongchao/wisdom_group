@@ -51,7 +51,7 @@ public class UserController implements Serializable {
         UserInfoToken userInfoToken = new UserInfoToken();
         if(success){
             Map<String,String> map = new HashMap<>();
-            userInfoToken.setCode(20000);
+            userInfoToken.setCode(200);
             map.put("token",num);
             userInfoToken.setData(map);
         }
@@ -65,7 +65,7 @@ public class UserController implements Serializable {
         ReturnToken returnToken = new ReturnToken();
         TokenData tokenData = new TokenData();
         List<String> list = new ArrayList<>();
-        returnToken.setCode(20000);
+        returnToken.setCode(200);
         list.add(user);
         tokenData.setRoles(list);
         tokenData.setName(user);
@@ -78,7 +78,7 @@ public class UserController implements Serializable {
     @PostMapping(value = "/logout")
     public LogOut logOut(){
         LogOut logOut = new LogOut();
-        logOut.setCode(20000);
+        logOut.setCode(200);
         logOut.setData("success");
         return logOut;
     }
@@ -105,7 +105,7 @@ public class UserController implements Serializable {
             }
         }else {
             String data = "原密码输入错误！";
-            resultEntity = JsonResultUtils.success(data,20000,false);
+            resultEntity = JsonResultUtils.success(data,200,false);
         }
 
         return resultEntity;
