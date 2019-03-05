@@ -75,6 +75,11 @@ public class LeagueController implements Serializable{
     @ApiOperation(value = "批量添加团员信息")
     @PostMapping(value = "multipleAdd")
     public JsonResultEntity multipleAdd(@RequestBody ListLeagueDto leagueDto){
+        for (League l:leagueDto.getData()) {
+            Date date = new Date();
+            l.setLeagueTime(date);
+            l.setApplyDate(date);
+        }
         JsonResultEntity resultEntity = JsonResultUtils.success(leagueService.insertBatch(leagueDto.getData()));
         return resultEntity;
     }
