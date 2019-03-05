@@ -19,7 +19,7 @@
       <el-table :data="tableData">
         <el-table-column :index="indexMethod" type="index" label="序号" align="center" width="160"/>
         <el-table-column prop="name" align="center" label="新注册的团员" width="160"/>
-        <el-table-column prop="leagueTime" align="center" label="申请时间" width="160"/>
+        <el-table-column prop="applyDate" align="center" label="申请时间" width="160"/>
         <el-table-column prop="bussinessType" align="center" label="业务类型" width="160"/>
         <el-table-column prop="examinationType" align="center" label="审批事项" width="160"/>
         <el-table-column prop="status" align="center" label="处理状态" width="160"/>
@@ -89,7 +89,7 @@ export default {
           this.tableData[i] = {
             id: this.tableData[i].id,
             name: this.tableData[i].name,
-            leagueTime: this.tableData[i].leagueTime,
+            applyDate: this.tableData[i].applyDate,
             bussinessType: this.bussinessType,
             examinationType: this.examinationType,
             status: this.status
@@ -149,7 +149,16 @@ export default {
     },
     indexMethod(index) {
       return index + 1 + this.form.page.pageCount * (this.form.page.current - 1)
+    },
+    dateFormatTime: function(value) {
+      if (value) {
+        var formatterTime = moment(new Date(value)).format('YYYY-MM-DD')
+        return "<font color='red'>" + formatterTime + '</font>'
+      } else {
+        return ''
+      }
     }
+
   }
 
 }

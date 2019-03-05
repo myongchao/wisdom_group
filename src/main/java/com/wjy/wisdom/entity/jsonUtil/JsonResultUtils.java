@@ -1,5 +1,9 @@
 package com.wjy.wisdom.entity.jsonUtil;
 
+import lombok.Data;
+
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * Copyright (C), 2018 - 2019, ZhengZhouChuangZhi. Co., Ltd.
  * FileName: [ 文件名 ]
@@ -9,7 +13,17 @@ package com.wjy.wisdom.entity.jsonUtil;
  * @version 1.0
  * @date 2019/1/11$ 8:58$
  */
+
 public class JsonResultUtils{
+
+//    public static HttpServletResponse success(HttpServletResponse response){
+//        Integer code;
+//        Boolean success;
+//        HttpServletResponse data;
+//        JsonResultEntity resultEntity = new JsonResultEntity();
+//        resultEntity.setData(response);
+//
+//    }
 
     public static JsonResultEntity success(Object object) {
         JsonResultEntity jsonResult = new JsonResultEntity();

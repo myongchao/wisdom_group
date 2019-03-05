@@ -14,15 +14,17 @@ import com.wjy.wisdom.util.ExcelUtil;
 import com.wjy.wisdom.util.ExportExcel;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
+import java.beans.Transient;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Serializable;
@@ -177,84 +179,53 @@ public class LeagueController implements Serializable{
     }
 
 
-    @ApiOperation(value = "导出",notes = "导出")
-    @PostMapping(value = "/export")
-    @ResponseBody
-    public void export(@RequestBody List<Long> ids, HttpServletResponse response){
-        //获取数据
-        List<League> list = leagueService.selectList(new EntityWrapper<League>().in("id",ids));
-        //excel标题
-        String[] title = {"姓名","身份证号码","民族","政治面貌","文化程度","手机号","入团日期","QQ",}; //是否团干","团干性质","现任职务","是否党员","是否管理员"
+    @ApiOperation(value = "导出 ")
+    @RequestMapping(value = "UserExcelDownloads", method = RequestMethod.GET)
+    public void downloadAllClassmate(HttpServletResponse response) throws IOException {
+        HSSFWorkbook workbook = new HSSFWorkbook();
+        HSSFSheet sheet = workbook.createSheet("信息表");
 
-        //创建院系实例
-        // Department department = new Department();
-        //标准时间格式为：年月日时分秒
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        //excel文件名
-        //String fileName = "专业信息表"+System.currentTimeMillis()+".xls";
-        String fileName = "123"+".xlsx";
-        //sheet名
-        String sheetName = "团员信息表";
-        int line = 0;
-        line = list.size();
-        String [][] content = new String[line][];
-        for (int i = 0; i < list.size(); i++) {
-            content[i] = new String[title.length];
-            League obj = list.get(i);
-//            Long dId = Long.valueOf(String.valueOf(obj.getDepartmentsId()));
-//            department = departmentService.selectOne(new EntityWrapper<Department>().eq("id",dId));
-            content[i][0] = obj.getName();
-            content[i][1] = obj.getIdNumber();
-            content[i][2] = obj.getNational();
-            content[i][3] = obj.getPoliticalLandscape();
-            content[i][4] = obj.getEducation();
-            content[i][5] = obj.getPhone();
-            content[i][6] = format.format(obj.getLeagueTime());
-            content[i][7] = obj.getQq();
-//            content[i][8] = obj.getTuanGan();
-//            content[i][9] = obj.getTuanGanXZ();
-//            content[i][10] = obj.getPosition();
-//            content[i][11] = obj.getPartyMember();
-//            content[i][8] = obj.getIsAdmin();
-        }
-//创建HSSFWorkbook
-        HSSFWorkbook wb = ExportExcel.getHSSFWorkbook(sheetName, title, content, null);
+        List<League> classmateList = leagueService.selectList(new EntityWrapper<League>());
 
-//响应到客户端
-        HSSFWorkbook sss = new HSSFWorkbook();
-        try {
-            this.setResponseHeader(response, fileName);
-            OutputStream os = response.getOutputStream();
-            wb.write(os);
-            os.flush();
-            os.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        //System.out.printf(response);
-    }
+        String fileName = "league"  + ".xls";//设置要导出的文件的名字
+        //新增数据行，并且设置单元格数据
 
-    /**
-     * @description  发送响应流方法
-     * @author 马勇超
-     * @date 2018/11/28 8:55
-     * @return
-     */
-    public void setResponseHeader(HttpServletResponse response, String fileName) {
-        try {
-            try {
-                fileName = new String(fileName.getBytes(),"UTF-8");
-            } catch (UnsupportedEncodingException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            response.setContentType("application/vnd.ms-excel;charset=UTF-8");
-            response.setHeader("Content-Disposition", "attachment;filename="+ fileName);
-            response.addHeader("Pargam", "no-cache");
-            response.addHeader("Cache-Control", "no-cache");
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        int rowNum = 1;
+
+        String[] headers = {"姓名","身份证号码","民族","政治面貌","文化程度","手机号","入团日期","QQ","是否团干","团干性质","现任职务","是否党员","是否管理员"};
+        //headers表示excel表中第一行的表头
+
+        HSSFRow row = sheet.createRow(0);
+        //在excel表中添加表头
+        for(int i=0;i<headers.length;i++){
+            HSSFCell cell = row.createCell(i);
+            HSSFRichTextString text = new HSSFRichTextString(headers[i]);
+            cell.setCellValue(text);
         }
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        //在表中存放查询到的数据放入对应的列
+        for (League teacher : classmateList) {
+            HSSFRow row1 = sheet.createRow(rowNum);
+            row1.createCell(0).setCellValue(teacher.getName());
+            row1.createCell(1).setCellValue(teacher.getIdNumber());
+            row1.createCell(2).setCellValue(teacher.getNational());
+            row1.createCell(3).setCellValue(teacher.getPoliticalLandscape());
+            row1.createCell(4).setCellValue(teacher.getEducation());
+            row1.createCell(5).setCellValue(teacher.getPhone());
+            row1.createCell(6).setCellValue(format.format(teacher.getLeagueTime()));
+            row1.createCell(7).setCellValue(teacher.getQq());
+            row1.createCell(8).setCellValue(teacher.getTuanGan());
+            row1.createCell(9).setCellValue(teacher.getTuanGanXZ());
+            row1.createCell(10).setCellValue(teacher.getPosition());
+            row1.createCell(11).setCellValue(teacher.getPartyMember());
+            row1.createCell(12).setCellValue(teacher.getIsAdmin());
+            rowNum++;
+        }
+
+        response.setContentType("application/octet-stream;charset=utf-8");
+        response.setHeader("Content-disposition", "attachment;filename=" + fileName);
+        response.flushBuffer();
+        workbook.write(response.getOutputStream());
     }
 
 

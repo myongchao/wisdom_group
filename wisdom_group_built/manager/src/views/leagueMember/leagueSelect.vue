@@ -26,15 +26,8 @@
     </div>
     <div class="manager">
       <el-table
-        ref="multipleTable"
         :data="tableData"
-        tooltip-effect="dark"
-        style="width: 100%"
-        @selection-change="handleSelectionChange">
-        <el-table-column
-          type="selection"
-          align="center"
-        />
+      >
         <el-table-column :index="indexMethod" type="index" label="序号" align="center" width="160"/>
         <el-table-column prop="name" align="center" label="姓名" width="160"/>
         <el-table-column prop="national" align="center" label="民族" width="160"/>
@@ -65,7 +58,7 @@ import editLeague from './components/editLeague'
 import detaileLeague from './components/detaileLeague'
 import importData from './importData'
 import {
-  pageWithLeague, deleteLeague, exportByIds } from '@/api/league'
+  pageWithLeague, deleteLeague } from '@/api/league'
 export default {
   components: {
     page,
@@ -108,6 +101,10 @@ export default {
         this.tableData = data
       })
     },
+    // 导出 数据
+    exportLeague() {
+      window.location.href = 'league/UserExcelDownloads'
+    },
     editLeague(id) {
       this.$refs.edit.open(id)
     },
@@ -124,36 +121,6 @@ export default {
     onImportSuccess(e) {
       if (e) {
         this.getList()
-      }
-    },
-    // 获取复选框被选中的专业数据
-    handleSelectionChange(val) {
-      this.multipleSelection = val
-    },
-    // 批量删除选中的专业数据
-    batchDeleted() {
-      if (this.multipleSelection.length === 0) {
-        this.$warnmsg('请选择要删除的专业')
-        return
-      } else {
-        const ids = this.multipleSelection.map(b => b.id)
-        this.delete(ids)
-      }
-    },
-    // 导出专业数据
-    exportLeague() {
-      if (this.multipleSelection.length === 0) {
-        this.$warnmsg('请选择要导出的专业')
-        return
-      } else {
-        const ids = this.multipleSelection.map(b => b.id)
-        exportByIds(ids).then(e => {
-          const blob = new Blob([e.data], {
-            type: 'application/vnd.ms-excel'
-          })
-          const blobUrl = URL.createObjectURL(blob)
-          window.open(blobUrl)
-        })
       }
     },
     deleteLeague(index) {

@@ -31,10 +31,10 @@ export function insertBatches(list) {
 /** 导出 */
 export function exportByIds(data) {
   return request({
-    url: '/league/export',
-    method: 'post',
+    url: 'league/UserExcelDownloads',
+    method: 'get',
     data,
-    responseType: 'blob'
+    responseType: 'arraybuffer'
   })
 }
 

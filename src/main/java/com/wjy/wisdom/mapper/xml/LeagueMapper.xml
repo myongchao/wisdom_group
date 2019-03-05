@@ -15,6 +15,7 @@
         <result column="education" property="education" />
         <result column="phone" property="phone" />
         <result column="leagueTime" property="leagueTime" />
+        <result column="applyDate" property="applyDate"></result>
         <result column="qq" property="qq" />
         <result column="tuanGan" property="tuanGan" />
         <result column="tuanGanXZ" property="tuanGanXZ"></result>

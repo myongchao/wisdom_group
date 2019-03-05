@@ -53,9 +53,14 @@ public class League extends FullAuditedEntity<League,Long> implements Serializab
     /**
      * 入团时间
      */
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm",timezone="GMT+8")
+//    @JsonFormat(pattern="yyyy-MM-dd HH:mm",timezone="GMT+8")
     @TableField("leagueTime")
     private Date leagueTime;
+
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm",timezone="GMT+8")
+    @TableField("applyDate")
+    private Date applyDate;
+
     private String qq;
     /**
      * 团干
