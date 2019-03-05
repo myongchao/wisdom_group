@@ -7,5 +7,5 @@ module.exports = merge(prodEnv, {
   // BASE_API: '"https://easy-mock.com/mock/5950a2419adc231f356a6636/vue-admin"'
   BASE_API: '"/apis"',
   LoginType: '"token"',
-  HOST: '"http://localhost:8088"'
+  HOST: '"http://localhost:8888"'
 })

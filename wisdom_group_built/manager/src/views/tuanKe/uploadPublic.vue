@@ -9,31 +9,31 @@
             placeholder="选择团课召开时间"/>
         </el-form-item>
         <div class="buttom">
-          <el-form-item label="团课学时:" prop="title">
-            <el-select v-model="form.title" placeholder="请选择团课学时">
+          <el-form-item label="团课学时:" prop="classHour">
+            <el-select v-model="form.classHour" placeholder="请选择团课学时">
               <el-option
                 v-for="(item,index) in schedules"
                 :key="index"
-                :label="item.title"
-                :value="item.title"/>
+                :label="item.classHour"
+                :value="item.classHour"/>
             </el-select>
           </el-form-item>
-          <el-form-item label="团课地点:" prop="destination">
-            <el-input v-model="form.destination" placeholder="请输入4-24有效字数"/>
+          <el-form-item label="团课地点:" prop="place">
+            <el-input v-model="form.place" placeholder="请输入4-24有效字数"/>
           </el-form-item>
           <el-form-item label="团课主题:" prop="theme">
             <el-input v-model="form.theme" placeholder="请输入12-24有效字数"/>
           </el-form-item>
-          <el-form-item label="团课内容:" prop="textarea">
+          <el-form-item label="团课内容:" prop="content">
             <el-input
               :rows="5"
-              v-model="form.textarea"
+              v-model="form.content"
               class="text"
               type="textarea"
               placeholder="请输入24-8000有效字数"/>
           </el-form-item>
           <el-form-item class="btn">
-            <el-button :plain="true" type="primary" @click="submitForm('form')">提交</el-button>
+            <el-button :plain="true" type="primary" @click="submitForm()">提交</el-button>
             <el-button class="btn" @click="resetForm('form')">重置</el-button>
           </el-form-item>
         </div>
@@ -43,32 +43,38 @@
 </template>
 
 <script>
+import {
+  addTeamclass } from '@/api/teamclass'
 export default {
   data() {
     return {
       form: {
-        title: undefined,
+        classHour: undefined,
         tuanKeDate: undefined,
-        destination: undefined,
+        place: undefined,
         theme: undefined,
-        textarea: undefined
+        content: undefined
       },
       value1: '',
       schedules: [
-        { id: 1, title: '1学时' },
-        { id: 2, title: '2学时' },
-        { id: 3, title: '3学时' },
-        { id: 4, title: '4学时' }
+        { id: 1, classHour: '1学时' },
+        { id: 2, classHour: '2学时' },
+        { id: 3, classHour: '3学时' },
+        { id: 4, classHour: '4学时' }
       ]
     }
   },
   methods: {
-    submitForm(formName) {
-      this.$message({
-        message: '提交成功',
-        type: 'success'
+    submitForm() {
+      addTeamclass(this.form).then(e => {
+        if (e.success) {
+          this.$message({
+            message: '提交成功',
+            type: 'success'
+          })
+          this.close()
+        }
       })
-      this.close()
     },
     resetForm(formName) {
       this.$refs[formName].resetFields()

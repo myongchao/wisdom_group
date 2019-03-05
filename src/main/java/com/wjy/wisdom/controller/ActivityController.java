@@ -2,11 +2,12 @@ package com.wjy.wisdom.controller;
 
 
 import com.baomidou.mybatisplus.plugins.Page;
-import com.wjy.wisdom.entity.Meetting;
+import com.wjy.wisdom.entity.Activity;
 import com.wjy.wisdom.entity.Teamclass;
 import com.wjy.wisdom.entity.jsonUtil.JsonResultEntity;
 import com.wjy.wisdom.entity.jsonUtil.JsonResultUtils;
 import com.wjy.wisdom.mian.entity.CommonSearchDto;
+import com.wjy.wisdom.service.ActivityService;
 import com.wjy.wisdom.service.TeamclassService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,17 +28,17 @@ import java.io.Serializable;
  * @since 2019-03-05
  */
 @RestController
-@RequestMapping("/teamclass")
-@Api(description = "团课")
-public class TeamclassController implements Serializable {
+@RequestMapping("/activity")
+@Api(description = "团日活动")
+public class ActivityController implements Serializable {
 
     @Autowired
-    private TeamclassService service;
+    private ActivityService service;
 
     @ApiOperation(value = "分页")
     @PostMapping(value = "page")
-    public JsonResultEntity page(@RequestBody CommonSearchDto<Teamclass> searchDto) throws JSONException {
-        Page<Teamclass> page = service.selectPageWith(searchDto.getPlusPage(),searchDto.formToEntityWrapperWithSearch(new String[]{""},null));
+    public JsonResultEntity page(@RequestBody CommonSearchDto<Activity> searchDto) throws JSONException {
+        Page<Activity> page = service.selectPageWith(searchDto.getPlusPage(),searchDto.formToEntityWrapperWithSearch(new String[]{""},null));
         JsonResultEntity resultEntity = JsonResultUtils.success(page);
         return resultEntity;
     }
@@ -51,8 +52,8 @@ public class TeamclassController implements Serializable {
 
     @ApiOperation(value = "添加")
     @PostMapping(value = "add")
-    public JsonResultEntity add(@RequestBody Teamclass teamclass){
-        JsonResultEntity resultEntity = JsonResultUtils.success(service.insert(teamclass));
+    public JsonResultEntity add(@RequestBody Activity activity){
+        JsonResultEntity resultEntity = JsonResultUtils.success(service.insert(activity));
         return resultEntity;
     }
 

@@ -11,29 +11,29 @@
               :value="item.title"/>
           </el-select>
         </el-form-item>
-        <el-form-item label="会议时间:" class="dateSelect" prop="huiYiDate">
+        <el-form-item label="会议时间:" class="dateSelect" prop="meetDate">
           <el-date-picker
-            v-model="form.huiYiDate"
+            v-model="form.meetDate"
             type="datetime"
             placeholder="选择日期"/>
         </el-form-item>
         <div class="buttom">
-          <el-form-item label="会议地点:" prop="destination">
-            <el-input v-model="form.destination" placeholder="请输入4-24有效字数"/>
+          <el-form-item label="会议地点:" prop="place">
+            <el-input v-model="form.place" placeholder="请输入4-24有效字数"/>
           </el-form-item>
           <el-form-item label="会议主题:" prop="theme">
             <el-input v-model="form.theme" placeholder="请输入12-24有效字数"/>
           </el-form-item>
-          <el-form-item label="会议内容:" prop="textarea">
+          <el-form-item label="会议内容:" prop="content">
             <el-input
               :rows="5"
-              v-model="form.textarea"
+              v-model="form.content"
               class="text"
               type="textarea"
               placeholder="请输入24-8000有效字数"/>
           </el-form-item>
           <el-form-item class="btn">
-            <el-button :plain="true" type="primary" @click="submitForm('form')">提交</el-button>
+            <el-button :plain="true" type="primary" @click="submitForm()">提交</el-button>
             <el-button class="btn" @click="resetForm('form')">重置</el-button>
           </el-form-item>
         </div>
@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import {
+  addMeet } from '@/api/meetting'
 export default {
   data() {
     return {
@@ -62,12 +64,16 @@ export default {
     }
   },
   methods: {
-    submitForm(formName) {
-      this.$message({
-        message: '提交成功',
-        type: 'success'
+    submitForm() {
+      addMeet(this.form).then(e => {
+        if (e.success) {
+          this.$message({
+            message: '提交成功',
+            type: 'success'
+          })
+          this.close()
+        }
       })
-      this.close()
     },
     resetForm(formName) {
       debugger

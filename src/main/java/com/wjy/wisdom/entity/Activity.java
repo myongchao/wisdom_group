@@ -2,14 +2,13 @@ package com.wjy.wisdom.entity;
 
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
+import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import java.io.Serializable;
-import java.util.Date;
 
 import com.baomidou.mybatisplus.annotations.Version;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.wjy.wisdom.mian.entity.FullAuditedEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -24,29 +23,31 @@ import lombok.experimental.Accessors;
  * @since 2019-03-05
  */
 @Data
-@TableName("teamclass")
+@TableName("activity")
 @Accessors(chain = true)
-public class Teamclass extends FullAuditedEntity<Teamclass,Long> implements Serializable {
+public class Activity extends FullAuditedEntity<Activity,Long> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableField("tuanKeDate")
-    private Date tuanKeDate;
     /**
-     * 团课学时
+     * 活动类型
      */
-    @TableField("classHour")
-    private String classHour;
+    private String name;
     /**
-     * 团课地点
+     * 活动日期
+     */
+    @TableField("activityDate")
+    private Date activityDate;
+    /**
+     * 活动地点
      */
     private String place;
     /**
-     * 团课主题
+     * 活动主题
      */
     private String theme;
     /**
-     * 团课 内容
+     * 活动内容
      */
     private String content;
 

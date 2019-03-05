@@ -15,9 +15,8 @@
         align="center"
       >
         <template slot-scope="scope">
-          <el-button type="info" size="small" icon="el-icon-document" plain @click="detaileLeague(scope.row.id)"/>
-          <el-button type="primary" size="small" icon="el-icon-edit" plain @click="editLeague(scope.row.id)"/>
-          <el-button type="danger" size="small" icon="el-icon-delete" plain @click="deleteLeague(scope.$index)"/>
+          <!-- <el-button type="info" size="small" icon="el-icon-document" plain @click="detaileLeague(scope.row.id)"/> -->
+          <el-button type="danger" size="small" icon="el-icon-delete" plain @click="deleteMeet(scope.$index)"/>
         </template>
       </el-table-column>
     </el-table>
@@ -29,7 +28,7 @@
 <script>
 import page from '@/components/page'
 import {
-  pageWithMeeting } from '@/api/meetting'
+  pageWithMeeting, deleteMeet } from '@/api/meetting'
 export default {
   components: {
     page
@@ -66,6 +65,34 @@ export default {
           this.tableData = e.data.records
           this.form.page.total = e.data.total
         }
+      })
+    },
+    deleteMeet(index) {
+      this.$confirm('很重要的信息，你确定删除吗？', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(_ => {
+        deleteMeet(this.tableData[index].id).then(e => {
+          if (e.success) {
+            this.getList()
+            this.form.page.total--
+            this.$message({
+              type: 'success',
+              message: '删除成功！'
+            })
+          } else {
+            this.$message({
+              type: 'error',
+              message: '删除失败！'
+            })
+          }
+        })
+      }).catch(_ => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        })
       })
     },
     submitForm() {

@@ -29,7 +29,7 @@ public class GeneratorServiceEntity {
     public void generateCode() {
         String packageName = "com.wjy.wisdom";
         boolean serviceNameStartWithI = false;//user -> UserService, 设置成true: user -> IUserService
-        generateByTables(serviceNameStartWithI, packageName, "teamClass");
+        generateByTables(serviceNameStartWithI, packageName, "activity");
     }
 
     private void generateByTables(boolean serviceNameStartWithI, String packageName, String... tableNames) {

@@ -32,6 +32,7 @@ import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -64,7 +65,9 @@ public class LeagueController implements Serializable{
     @ApiOperation(value = "添加团员信息")
     @PostMapping(value = "add")
     public JsonResultEntity add(@RequestBody League league){
+        Date date = new Date();
         league.setStatus("正常");
+        league.setApplyDate(date);
         JsonResultEntity resultEntity = JsonResultUtils.success(leagueService.insert(league));
         return resultEntity;
     }

@@ -1,18 +1,18 @@
 import request from '@/utils/request'
 
 /** 会议信息分页 */
-export function pageWithMeeting(data) {
+export function pageWithTeamclass(data) {
   return request({
-    url: 'meetting/page',
+    url: 'teamclass/page',
     method: 'post',
     data
   })
 }
 
 /** 删除会议信息 */
-export function deleteMeet(id) {
+export function deleteTeamclass(id) {
   return request({
-    url: 'meetting/del',
+    url: 'teamclass/del',
     method: 'post',
     params: {
       id
@@ -21,9 +21,9 @@ export function deleteMeet(id) {
 }
 
 /** 添加会议信息 */
-export function addMeet(data) {
+export function addTeamclass(data) {
   return request({
-    url: 'meetting/add',
+    url: 'teamclass/add',
     method: 'post',
     data
   })
