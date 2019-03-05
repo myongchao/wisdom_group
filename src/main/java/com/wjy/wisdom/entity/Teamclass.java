@@ -30,6 +30,7 @@ public class Teamclass extends FullAuditedEntity<Teamclass,Long> implements Seri
 
     private static final long serialVersionUID = 1L;
 
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
     @TableField("tuanKeDate")
     private Date tuanKeDate;
     /**

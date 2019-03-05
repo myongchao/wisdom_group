@@ -14,7 +14,7 @@
     </resultMap>
 
     <select id="selectPageWith" resultMap="BaseResultMap">
-        select * from activity
+        select id,name,activityDate, place,theme,content from activity
         <where>
             ${ew.sqlSegment}
         </where>

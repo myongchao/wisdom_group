@@ -60,9 +60,13 @@ export default {
         if (e.data) {
           this.tableData = e.data.records
           this.form.page.total = e.data.total
+          for (var i = 0; i < this.tableData.length; i++) {
+            this.tableData[i].activityDate = timeFormat(this.tableData[i].activityDate)
+          }
         }
       })
     },
+
     deleteActivity(index) {
       this.$confirm('很重要的信息，你确定删除吗？', '提示', {
         confirmButtonText: '确定',

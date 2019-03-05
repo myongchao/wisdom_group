@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 import com.baomidou.mybatisplus.annotations.Version;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.wjy.wisdom.mian.entity.FullAuditedEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -36,6 +37,7 @@ public class Activity extends FullAuditedEntity<Activity,Long> implements Serial
     /**
      * 活动日期
      */
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
     @TableField("activityDate")
     private Date activityDate;
     /**

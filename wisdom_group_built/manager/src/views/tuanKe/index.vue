@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="btn"><el-button size="small" type="primary" style="height: 75%;" @click="submitForm()">团课发布</el-button></div>
+    <div class="btn"><el-button size="small" type="primary" style="height: 75%;" @click="submitForm()">团课上传</el-button></div>
     <div class="tuanke"><el-table
       :data="tableData"
     >
