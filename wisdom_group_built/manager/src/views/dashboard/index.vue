@@ -43,7 +43,7 @@
             “全国优秀共青团员冶 “全国优秀共青团干部冶
             “全国五四红旗团委 (团支部) 冶 的通知</a></li>
           <li><a href="https://zhtj.youth.cn/zhtj/help/P020181026.pdf" target="_blank">
-            关于做好“智慧团建”系统的团员团干部信息采集录入工作的通知</a></li>
+            关于做好“智慧团建”系统的团员团干部信息采集录入工作的通知(持续更新中)</a></li>
           <li><a href="https://zhtj.youth.cn/zhtj/help/index_czzn.html" target="_blank">“智慧团建”系统组织树建立操作指南</a></li>
         </ul>
       </div>
