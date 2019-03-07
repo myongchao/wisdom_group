@@ -35,12 +35,16 @@
       </div>
       <div>
         <ul>
-          <li>“智慧团建”系统操作常见问题解答</li>
-          <li>“智慧团建”系统全团推广工作常见问题解答（持续更新中）</li>
-          <li>共青团中央办公厅关于做好 “智慧团建冶 系统组织树建立阶段工作的通知</li>
-          <li>“智慧团建”系统操作常见问题解答</li>
-          <li>“智慧团建”系统全团推广工作常见问题解答（持续更新中）</li>
-          <li>共青团中央办公厅关于做好 “智慧团建冶 系统组织树建立阶段工作的通知</li>
+          <li><a href="https://b.xiumi.us/board/v5/3qTJy/101392066" target="_blank">“智慧团建”系统全团推广工作常见问题解答（持续更新中）</a></li>
+          <li><a href="http://www.gqt.org.cn/documents/zqbf/201712/P020171207616840064337.pdf" target="_blank">共青团中央办公厅关于做好 “智慧团建冶 系统组织树建立阶段工作的通知</a></li>
+          <li><a href="http://c.xiumi.us/board/v5/3cCN6/70680482" target="_blank">“智慧团建”系统操作常见问题解答</a></li>
+          <li><a href="https://zhtj.youth.cn/zhtj/help/%E5%85%B3%E4%BA%8E%E7%94%B3%E6%8A%A52018%E5%B9%B4%E5%BA%A6%E5%85%A8%E5%9B%BD%E2%80%9C%E4%B8%A4%E7%BA%A2%E2%80%9D%E2%80%9C%E4%B8%A4%E4%BC%98%E2%80%9D%E7%9A%84%E9%80%9A%E7%9F%A5.pdf" target="_blank">
+            共青团中央办公厅关于申报 2018 年度
+            “全国优秀共青团员冶 “全国优秀共青团干部冶
+            “全国五四红旗团委 (团支部) 冶 的通知</a></li>
+          <li><a href="https://zhtj.youth.cn/zhtj/help/P020181026.pdf" target="_blank">
+            关于做好“智慧团建”系统的团员团干部信息采集录入工作的通知</a></li>
+          <li><a href="https://zhtj.youth.cn/zhtj/help/index_czzn.html" target="_blank">“智慧团建”系统组织树建立操作指南</a></li>
         </ul>
       </div>
     </div>
