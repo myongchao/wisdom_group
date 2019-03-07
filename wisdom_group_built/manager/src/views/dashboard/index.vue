@@ -80,18 +80,6 @@
           <p class="nav_title">会议活动</p>
         </a>
       </div>
-      <!-- <div class="nav">
-        <div class="each_menu">
-          <img src="../../assets/images/task.png">
-        </div>
-        <p class="nav_title">团员教育评议</p>
-      </div>
-      <div class="nav">
-        <div class="each_menu">
-          <img src="../../assets/images/aixin.png">
-        </div>
-        <p class="nav_title">年度团籍注册</p>
-      </div> -->
       <div class="nav">
         <a href="../..#/businessManager/examination">
           <div class="each_menu">
