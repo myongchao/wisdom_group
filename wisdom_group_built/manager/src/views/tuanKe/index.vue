@@ -36,8 +36,8 @@
 </template>
 
 <script>
-import page from '@/components/page';
-import { pageWithTeamclass, deleteTeamclass } from '@/api/teamclass';
+import page from '@/components/page'
+import { pageWithTeamclass, deleteTeamclass } from '@/api/teamclass'
 export default {
   components: {
     page

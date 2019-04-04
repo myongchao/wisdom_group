@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import page from '@/components/page';
-import { pageWithMeeting, deleteMeet } from '@/api/meetting';
+import page from '@/components/page'
+import { pageWithMeeting, deleteMeet } from '@/api/meetting'
 export default {
   components: {
     page

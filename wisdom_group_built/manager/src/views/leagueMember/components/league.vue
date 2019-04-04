@@ -34,7 +34,7 @@
     </el-form-item>
     <el-form-item label="团干性质:" prop="tuanGanXZ">
       <el-select v-model="entity.tuanGanXZ" placeholder="请选择团干性质">
-        <el-option v-for="item in tuanGanXZES" :label="item.tuanGanXZ" :value="item.tuanGanXZ" :key="index"/>
+        <el-option v-for="(item,index) in tuanGanXZES" :label="item.tuanGanXZ" :value="item.tuanGanXZ" :key="index"/>
       </el-select>
     </el-form-item>
     <el-form-item label="现任职务:" prop="position">

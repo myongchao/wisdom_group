@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import page from '@/components/page';
-import { pageWithActivity, deleteActivity } from '@/api/activity';
+import page from '@/components/page'
+import { pageWithActivity, deleteActivity } from '@/api/activity'
 export default {
   components: {
     page

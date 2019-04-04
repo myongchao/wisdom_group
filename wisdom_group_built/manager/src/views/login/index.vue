@@ -2,6 +2,7 @@
   <div class="logo">
     <div class="login-container">
       <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
+        <div class="backgroundstyle"/>
         <h3 class="title">智慧团建管理系统</h3>
         <el-form-item prop="username">
           <span class="svg-container">
@@ -124,11 +125,13 @@ height: 100%;
     width: 85%;
     input {
       background: transparent;
-      border: 0px;
+      border: 1px;
+      border-radius: 5px;
       -webkit-appearance: none;
       border-radius: 0px;
       padding: 12px 5px 12px 15px;
-      color: $light_gray;
+      color: rgb(26, 62, 98);
+      background-color: #F2EFE8;
       height: 47px;
       &:-webkit-autofill {
         -webkit-box-shadow: 0 0 0px 1000px $bg inset !important;
@@ -138,9 +141,9 @@ height: 100%;
   }
   .el-form-item {
     border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(31, 21, 21, 0.1);
     border-radius: 5px;
-    color: #454545;
+    // color: #6e2323;
   }
 }
 
@@ -176,15 +179,18 @@ $light_gray:#eee;
   }
   .svg-container {
     padding: 6px 5px 6px 15px;
-    color: $dark_gray;
+    color: black;
     vertical-align: middle;
     width: 30px;
     display: inline-block;
   }
+  // .el-input{
+  //   background-color: #FFFF;
+  // }
   .title {
     font-size: 26px;
     font-weight: 400;
-    color: $light_gray;
+    color: #FFFFFF;
     margin: 0px auto 40px auto;
     text-align: center;
     font-weight: bold;
@@ -199,4 +205,13 @@ $light_gray:#eee;
     user-select: none;
   }
 }
+  .backgroundstyle{
+    position: absolute;
+    background-color: #FFFFFF;
+    margin-left:-35px;
+    margin-top:-10px;
+    width: 520px;
+    height: 300px;
+    opacity: 0.5;
+  }
 </style>
