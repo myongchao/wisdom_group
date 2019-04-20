@@ -1,6 +1,7 @@
 package com.wjy.wisdom.controller;
 
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.wjy.wisdom.entity.Meetting;
 import com.wjy.wisdom.entity.jsonUtil.JsonResultEntity;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -61,6 +63,14 @@ public class MeettingController implements Serializable {
             meetting.setType(3);
         }
         JsonResultEntity resultEntity = JsonResultUtils.success(service.insert(meetting));
+        return resultEntity;
+    }
+
+    @ApiOperation(value = "三会列表")
+    @GetMapping(value = "list")
+    public JsonResultEntity meetList(){
+        List<Meetting> meettings = service.selectList(new EntityWrapper<>());
+        JsonResultEntity resultEntity = JsonResultUtils.success(meettings);
         return resultEntity;
     }
 

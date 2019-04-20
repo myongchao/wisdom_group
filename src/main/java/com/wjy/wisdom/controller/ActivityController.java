@@ -1,6 +1,7 @@
 package com.wjy.wisdom.controller;
 
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.wjy.wisdom.entity.Activity;
 import com.wjy.wisdom.entity.Teamclass;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -57,5 +59,12 @@ public class ActivityController implements Serializable {
         return resultEntity;
     }
 
+    @ApiOperation(value = "团课列表")
+    @GetMapping(value = "list")
+    public JsonResultEntity meetList(){
+        List<Activity> activities = service.selectList(new EntityWrapper<>());
+        JsonResultEntity resultEntity = JsonResultUtils.success(activities);
+        return resultEntity;
+    }
 }
 
